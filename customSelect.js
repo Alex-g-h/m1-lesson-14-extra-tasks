@@ -65,6 +65,7 @@ export class CustomSelect {
       ulHTML.querySelectorAll('.select-dropdown__list-item').forEach(liElem =>
         liElem.classList.remove('selected'));
       target.classList.add('selected');
+      ulHTML.classList.toggle('active');
     });
   }
 
