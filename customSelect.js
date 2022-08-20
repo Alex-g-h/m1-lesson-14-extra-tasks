@@ -67,6 +67,22 @@ export class CustomSelect {
       target.classList.add('selected');
       ulHTML.classList.toggle('active');
     });
+
+    // add click outside event
+    document.addEventListener('click', (event) => {
+      const containerHTML = document.querySelector('.container');
+
+      let { target } = event;      
+      do {
+        if (target === containerHTML || target === ulHTML)
+          return; // ignore click in this handler while clicked on ROI
+        
+        target = target.parentNode; // climbing up in the DOM tree
+      } while (target)
+
+      // hide menu if clicked outside
+      ulHTML.classList.remove('active')
+    });
   }
 
   render(container) {
